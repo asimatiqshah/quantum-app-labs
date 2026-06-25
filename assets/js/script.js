@@ -45,28 +45,80 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // 3. Simple Contact Form Submission Feedback
+    // 3. Formspree AJAX Integration with Modern Feedback Alerts
     const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
+    const formStatusContainer = document.getElementById('formStatusContainer');
+    const formStatus = document.getElementById('formStatus');
+    const formSubmitBtn = document.getElementById('formSubmitBtn');
+
+    if (contactForm && formStatusContainer && formStatus && formSubmitBtn) {
         contactForm.addEventListener('submit', function (event) {
-            event.preventDefault(); // Stop page reload
+            event.preventDefault(); // Stop default browser form submit/reload
             
-            // Get values
-            const name = document.getElementById('formName').value;
-            const email = document.getElementById('formEmail').value;
-            const message = document.getElementById('formMessage').value;
+            // Get values for client-side validation
+            const name = document.getElementById('formName').value.trim();
+            const email = document.getElementById('formEmail').value.trim();
+            const subject = document.getElementById('formSubject').value.trim();
+            const message = document.getElementById('formMessage').value.trim();
             
-            // Simple validation check
-            if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
-                alert('Please fill out all fields before sending.');
+            // Reset status alerts
+            formStatusContainer.classList.add('d-none');
+            formStatus.className = 'alert mb-0';
+            formStatus.innerHTML = '';
+            
+            // Client-side validation check
+            if (name === '' || email === '' || subject === '' || message === '') {
+                formStatusContainer.classList.remove('d-none');
+                formStatus.classList.add('alert-danger');
+                formStatus.textContent = 'Please fill out all fields before sending.';
                 return;
             }
             
-            // Display success message
-            alert(`Thank you, ${name}! Your message has been sent successfully. We will contact you soon.`);
+            // Disable submit button and show loading state
+            formSubmitBtn.disabled = true;
+            const originalBtnText = formSubmitBtn.innerHTML;
+            formSubmitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Sending...';
             
-            // Reset the form
-            contactForm.reset();
+            // Create form data object to send to Formspree
+            const formData = new FormData(contactForm);
+            
+            // Send request to Formspree using fetch
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(function (response) {
+                if (response.ok) {
+                    formStatus.classList.add('alert-success');
+                    formStatus.innerHTML = `<strong>Success!</strong> Thank you, ${name}! Your message has been sent successfully. We will get back to you soon.`;
+                    contactForm.reset();
+                } else {
+                    return response.json().then(function (data) {
+                        if (data && data.errors) {
+                            formStatus.classList.add('alert-danger');
+                            formStatus.innerHTML = `<strong>Error:</strong> ` + data.errors.map(err => err.message).join(', ');
+                        } else {
+                            throw new Error('Form submission failed.');
+                        }
+                    });
+                }
+            })
+            .catch(function (error) {
+                formStatus.classList.add('alert-danger');
+                formStatus.innerHTML = '<strong>Error!</strong> Oops! There was a problem submitting your form. Please try again later.';
+            })
+            .finally(function () {
+                // Re-enable button and restore text
+                formSubmitBtn.disabled = false;
+                formSubmitBtn.innerHTML = originalBtnText;
+                
+                // Show the response status alert and scroll into view smoothly
+                formStatusContainer.classList.remove('d-none');
+                formStatusContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            });
         });
     }
 });
