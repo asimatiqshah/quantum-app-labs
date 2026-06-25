@@ -608,14 +608,14 @@
                     <div class="contact-form-card">
                         <h4 class="mb-4" style="font-weight: 700;">Send Us A Message</h4>
 
-                        <form id="contactForm">
+                        <form id="contactForm" action="https://formspree.io/f/meebejoa" method="POST">
                             <div class="row g-3">
                                 <!-- Name Input -->
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="formName" class="form-label font-weight-bold">Your Name</label>
-                                        <input type="text" class="form-control" id="formName" placeholder="John Doe"
-                                            required>
+                                        <input type="text" name="name" class="form-control" id="formName"
+                                            placeholder="John Doe" required>
                                     </div>
                                 </div>
 
@@ -623,7 +623,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="formEmail" class="form-label">Your Email</label>
-                                        <input type="email" class="form-control" id="formEmail"
+                                        <input type="email" name="_replyto" class="form-control" id="formEmail"
                                             placeholder="john@example.com" required>
                                     </div>
                                 </div>
@@ -632,7 +632,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="formSubject" class="form-label">Subject</label>
-                                        <input type="text" class="form-control" id="formSubject"
+                                        <input type="text" name="subject" class="form-control" id="formSubject"
                                             placeholder="Course inquiry..." required>
                                     </div>
                                 </div>
@@ -641,7 +641,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="formMessage" class="form-label">Message</label>
-                                        <textarea class="form-control" id="formMessage" rows="5"
+                                        <textarea name="message" class="form-control" id="formMessage" rows="5"
                                             placeholder="Write your message here..." required></textarea>
                                     </div>
                                 </div>
