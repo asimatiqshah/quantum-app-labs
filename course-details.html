@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Native Mobile App Development Masterclass - Nori</title>
+
+    <!-- Meta Descriptions for SEO -->
+    <meta name="description"
+        content="Master React Native in 10 weeks. Learn to build high-performance cross-platform iOS and Android apps using JavaScript and React. Complete syllabus, hands-on projects, and free certificate.">
+    <meta name="keywords"
+        content="React Native course, mobile app development, iOS app development, Android app development, JavaScript mobile framework, Nori education">
+
+    <!-- Bootstrap 5 CSS (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons (CDN) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Custom CSS (Local stylesheet) -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        /* Specific page override to ensure sticky navbar has background and is clean */
+        .navbar-details-page {
+            position: fixed !important;
+            top: 0 !important;
+            background-color: var(--bg-white) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 12px 0 !important;
+        }
+
+        .navbar-details-page .nav-link {
+            color: var(--text-dark) !important;
+        }
+
+        .navbar-details-page .nav-link:hover,
+        .navbar-details-page .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+
+        .navbar-details-page .navbar-brand {
+            color: var(--text-dark) !important;
+        }
+
+        .navbar-details-page .navbar-brand img {
+            filter: invert(1) hue-rotate(180deg);
+        }
+
+        /* Layout spacings */
+        .course-details-section {
+            padding: 60px 0 90px 0;
+            background-color: var(--bg-white);
+        }
+
+        .section-subtitle-badge {
+            display: inline-block;
+            background-color: rgba(232, 84, 44, 0.1);
+            color: var(--primary-color);
+            padding: 6px 15px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .tab-content-custom {
+            padding-top: 15px;
+        }
+
+        .prereq-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+
+        .prereq-icon {
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            line-height: 1;
+        }
+
+        .prereq-text {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================
+      1. TOP INFORMATION BAR (Hidden on Details Page to focus on Course)
+    ========================================= -->
+
+    <!-- =========================================
+      2. NAVIGATION BAR (Static Solid for details page)
+    ========================================= -->
+    <nav class="navbar navbar-expand-lg navbar-details-page">
+        <div class="container">
+            <!-- Brand Logo -->
+            <a class="navbar-brand" href="index.html#home">
+                <img src="assets/images/Logo.png" alt="Quantum App Labs" height="55"
+                    class="d-inline-block align-middle me-1">
+            </a>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Menu Links -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#why-choose">Why Choose Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html#courses">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#event">Event</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">Contact</a>
+                    </li>
+                    <!-- Nav CTA Button -->
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <a href="index.html#courses" class="btn btn-orange px-4 py-2 text-white">Get Free Course</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- =========================================
+      3. COURSE HERO BANNER
+    ========================================= -->
+    <section class="course-hero"
+        style="background-image: url('https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=1600');">
+        <div class="course-hero-overlay"></div>
+        <div class="container course-hero-content">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <!-- Navigation Back button -->
+                    <a href="index.html#courses" class="back-to-courses text-white-50">
+                        <i class="bi bi-arrow-left"></i> Back to Courses
+                    </a>
+
+                    <span class="section-subtitle-badge">MOBILE APP DEVELOPMENT</span>
+
+                    <h1 class="display-4 fw-bold text-white mb-3 mt-2">
+                        React Native Mobile App Development Masterclass
+                    </h1>
+
+                    <p class="lead text-white-50 mb-4" style="max-width: 800px;">
+                        Build high-performance, native iOS and Android apps using a single JavaScript/React codebase.
+                        Complete guide from scratch to App Store deployment.
+                    </p>
+
+                    <div class="course-meta-inline align-items-center">
+                        <div class="course-rating-stars d-inline-flex gap-1 align-items-center">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <span class="text-white ms-1 fw-bold">4.9</span>
+                            <span class="text-white-50 fw-normal">(1,240 reviews)</span>
+                        </div>
+                        <span class="text-white-50">|</span>
+                        <span><i class="bi bi-people-fill me-2"></i>100+ enrolled students</span>
+                        <span class="text-white-50">|</span>
+                        <span><i class="bi bi-person-fill me-2"></i>By Asim Atique</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+      4. COURSE DETAILS MAIN SECTION
+    ========================================= -->
+    <section class="course-details-section">
+        <div class="container">
+            <div class="row g-5">
+                <!-- Left Details Column (8 Cols) -->
+                <div class="col-lg-8">
+                    <!-- Course Image Collage (Visual highlight) -->
+                    <div class="mb-5 rounded-4 overflow-hidden position-relative shadow" style="height: 380px;">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=1200"
+                            alt="Mobile App Coding" class="w-100 h-100" style="object-fit: cover;">
+                    </div>
+
+                    <!-- Course Description -->
+                    <div class="mb-5">
+                        <h2 class="fw-bold mb-3">Course Overview</h2>
+                        <p class="text-muted">
+                            React Native is the revolutionary mobile framework created by Meta that allows software
+                            developers to engineer high-fidelity, native mobile applications for iOS and Android
+                            platforms simultaneously. Instead of writing separate codebases in Objective-C/Swift for
+                            Apple and Java/Kotlin for Google, React Native unlocks cross-platform development using
+                            clean, modern JavaScript.
+                        </p>
+                        <p class="text-muted">
+                            This program is structured to guide students from absolute mobile app layout foundations to
+                            complex system design. You will build highly responsive interfaces using **Flexbox styling
+                            layouts**, handle routing using **React Navigation**, optimize backend API data fetching,
+                            interact with native APIs (Camera, Photo roll, and Location tracking), and master App Store
+                            submission routines.
+                        </p>
+                    </div>
+
+                    <!-- What You'll Learn Grid -->
+                    <div class="mb-5 p-4 rounded-4 bg-light border">
+                        <h3 class="fw-bold mb-4">What You'll Learn</h3>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-start gap-2">
+                                    <i class="bi bi-patch-check-fill text-orange mt-1"></i>
+                                    <span class="text-muted fw-semibold">Compile completely native mobile applications
+                                        for iOS and Android.</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-start gap-2">
+                                    <i class="bi bi-patch-check-fill text-orange mt-1"></i>
+                                    <span class="text-muted fw-semibold">Master core UI elements: View, ScrollView,
+                                        FlatList, and text inputs.</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-start gap-2">
+                                    <i class="bi bi-patch-check-fill text-orange mt-1"></i>
+                                    <span class="text-muted fw-semibold">Build complex responsive screens using Flexbox
+                                        styles.</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-start gap-2">
+                                    <i class="bi bi-patch-check-fill text-orange mt-1"></i>
+                                    <span class="text-muted fw-semibold">Set up Stack, Tab, and Drawer
+                                        navigations.</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-start gap-2">
+                                    <i class="bi bi-patch-check-fill text-orange mt-1"></i>
+                                    <span class="text-muted fw-semibold">Secure client state management with Zustand and
+                                        Context API.</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-start gap-2">
+                                    <i class="bi bi-patch-check-fill text-orange mt-1"></i>
+                                    <span class="text-muted fw-semibold">Fetch external REST APIs and implement cache
+                                        storage on mobile.</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-start gap-2">
+                                    <i class="bi bi-patch-check-fill text-orange mt-1"></i>
+                                    <span class="text-muted fw-semibold">Access native APIs: Camera, Geolocation and
+                                        local directories.</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-start gap-2">
+                                    <i class="bi bi-patch-check-fill text-orange mt-1"></i>
+                                    <span class="text-muted fw-semibold">Publish final apps on Google Play Store and
+                                        Apple App Store.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course Curriculum Accordion -->
+                    <div class="mb-5">
+                        <h2 class="course-curriculum-title">Course Curriculum</h2>
+
+                        <div class="accordion" id="curriculumAccordion">
+
+                            <!-- Module 1 -->
+                            <div class="accordion-item-custom">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button-custom" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Module 1: Introduction & Local Environment Setup
+                                        <i class="bi bi-chevron-down ms-auto"></i>
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show"
+                                    aria-labelledby="headingOne" data-bs-parent="#curriculumAccordion">
+                                    <div class="accordion-body-custom">
+                                        Understand hybrid compilation architecture. Establish full development stacks on
+                                        Node.js, Watchman, Android Studio, SDK configurations, Xcode platforms, and
+                                        CocoaPods dependencies. Learn differences between Expo Go quick prototyping and
+                                        bare React Native CLI setups.
+                                        <ul class="syllabus-list mt-3">
+                                            <li><span><i class="bi bi-play-circle-fill"></i> Mobile app rendering vs web
+                                                    browser</span> <span>15:32</span></li>
+                                            <li><span><i class="bi bi-play-circle-fill"></i> Local simulator setup &
+                                                    React Native CLI tools</span> <span>24:10</span></li>
+                                            <li><span><i class="bi bi-file-code-fill"></i> Project structure walkthrough
+                                                    & configurations</span> <span>10:45</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Module 2 -->
+                            <div class="accordion-item-custom">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button-custom collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                                        aria-controls="collapseTwo">
+                                        Module 2: Core Components & Layouts with Flexbox
+                                        <i class="bi bi-chevron-down ms-auto"></i>
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#curriculumAccordion">
+                                    <div class="accordion-body-custom">
+                                        Deep dive into primitive layout components: View, Text, ScrollView, Image, and
+                                        dynamic styling objects. Master mobile Flexbox layout system rules, grid
+                                        alignments, spacing, and styling properties that look consistent on both iOS and
+                                        Android.
+                                        <ul class="syllabus-list mt-3">
+                                            <li><span><i class="bi bi-play-circle-fill"></i> Styling custom layouts with
+                                                    flex directions</span> <span>18:15</span></li>
+                                            <li><span><i class="bi bi-play-circle-fill"></i> Scrollable lists:
+                                                    ScrollView vs FlatList performance</span> <span>22:45</span></li>
+                                            <li><span><i class="bi bi-file-code-fill"></i> Building a responsive product
+                                                    listing card</span> <span>Quiz</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Module 3 -->
+                            <div class="accordion-item-custom">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button-custom collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
+                                        Module 3: React Hooks & Mobile Lifecycles
+                                        <i class="bi bi-chevron-down ms-auto"></i>
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse"
+                                    aria-labelledby="headingThree" data-bs-parent="#curriculumAccordion">
+                                    <div class="accordion-body-custom">
+                                        Learn react hooks applied to mobile lifecycles: useState, useEffect, and custom
+                                        modular hooks. Handle inputs, forms, validation UI displays, and keyboard
+                                        adjustments natively using specialized inputs.
+                                        <ul class="syllabus-list mt-3">
+                                            <li><span><i class="bi bi-play-circle-fill"></i> TextInput events & managing
+                                                    dynamic state</span> <span>14:50</span></li>
+                                            <li><span><i class="bi bi-play-circle-fill"></i> Handling virtual keyboard
+                                                    overlays</span> <span>19:35</span></li>
+                                            <li><span><i class="bi bi-file-code-fill"></i> Code: Building an interactive
+                                                    application form</span> <span>25:00</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Module 4 -->
+                            <div class="accordion-item-custom">
+                                <h2 class="accordion-header" id="headingFour">
+                                    <button class="accordion-button-custom collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
+                                        aria-controls="collapseFour">
+                                        Module 4: Navigation (Stack, Drawer & Tab Navigators)
+                                        <i class="bi bi-chevron-down ms-auto"></i>
+                                    </button>
+                                </h2>
+                                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                                    data-bs-parent="#curriculumAccordion">
+                                    <div class="accordion-body-custom">
+                                        Integrate and configure the popular React Navigation library. Learn how to
+                                        configure screens in a Stack navigator, create beautiful global Bottom Tab
+                                        structures, and design sliding drawer menus.
+                                        <ul class="syllabus-list mt-3">
+                                            <li><span><i class="bi bi-play-circle-fill"></i> Native Stack Navigator
+                                                    basics & configurations</span> <span>21:12</span></li>
+                                            <li><span><i class="bi bi-play-circle-fill"></i> Nested navigation layouts
+                                                    (Tabs inside Stack)</span> <span>28:40</span></li>
+                                            <li><span><i class="bi bi-file-code-fill"></i> Route params & screen
+                                                    transitions</span> <span>18:15</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Module 5 -->
+                            <div class="accordion-item-custom">
+                                <h2 class="accordion-header" id="headingFive">
+                                    <button class="accordion-button-custom collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false"
+                                        aria-controls="collapseFive">
+                                        Module 5: REST APIs & AsyncStorage Caching
+                                        <i class="bi bi-chevron-down ms-auto"></i>
+                                    </button>
+                                </h2>
+                                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                                    data-bs-parent="#curriculumAccordion">
+                                    <div class="accordion-body-custom">
+                                        Connect your client application to REST APIs using Axios and standard fetching
+                                        methods. Handle loader UI states, internet disconnections, error alerts, and
+                                        implement local persistent storage using AsyncStorage.
+                                        <ul class="syllabus-list mt-3">
+                                            <li><span><i class="bi bi-play-circle-fill"></i> Connecting to REST APIs &
+                                                    formatting payloads</span> <span>19:40</span></li>
+                                            <li><span><i class="bi bi-play-circle-fill"></i> Persistent local data
+                                                    storage using AsyncStorage</span> <span>16:50</span></li>
+                                            <li><span><i class="bi bi-file-code-fill"></i> Practical: Offline-first
+                                                    features integration</span> <span>30:00</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Module 6 -->
+                            <div class="accordion-item-custom">
+                                <h2 class="accordion-header" id="headingSix">
+                                    <button class="accordion-button-custom collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false"
+                                        aria-controls="collapseSix">
+                                        Module 6: Accessing Native Hardware APIs
+                                        <i class="bi bi-chevron-down ms-auto"></i>
+                                    </button>
+                                </h2>
+                                <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                                    data-bs-parent="#curriculumAccordion">
+                                    <div class="accordion-body-custom">
+                                        Request runtime mobile OS permission settings. Deep dive into utilizing native
+                                        mobile capabilities: integrating device camera features, accessing photo
+                                        galleries, tracking device GPS location coordinates, and dispatching
+                                        notifications.
+                                        <ul class="syllabus-list mt-3">
+                                            <li><span><i class="bi bi-play-circle-fill"></i> Custom OS permission
+                                                    requests</span> <span>12:20</span></li>
+                                            <li><span><i class="bi bi-play-circle-fill"></i> Capturing photos & storing
+                                                    files locally</span> <span>25:40</span></li>
+                                            <li><span><i class="bi bi-file-code-fill"></i> Interactive maps & GPS
+                                                    coordinate tracking</span> <span>21:10</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Module 7 -->
+                            <div class="accordion-item-custom">
+                                <h2 class="accordion-header" id="headingSeven">
+                                    <button class="accordion-button-custom collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false"
+                                        aria-controls="collapseSeven">
+                                        Module 7: State Management (Zustand & Context API)
+                                        <i class="bi bi-chevron-down ms-auto"></i>
+                                    </button>
+                                </h2>
+                                <div id="collapseSeven" class="accordion-collapse collapse"
+                                    aria-labelledby="headingSeven" data-bs-parent="#curriculumAccordion">
+                                    <div class="accordion-body-custom">
+                                        Scale your React Native application state. Manage global values, authentication
+                                        tokens, and user profiles across screens using light-weight Zustand state
+                                        management stores and Context API hooks.
+                                        <ul class="syllabus-list mt-3">
+                                            <li><span><i class="bi bi-play-circle-fill"></i> Auth flow state integration
+                                                    with Context API</span> <span>23:15</span></li>
+                                            <li><span><i class="bi bi-play-circle-fill"></i> Building global state hooks
+                                                    using Zustand</span> <span>18:30</span></li>
+                                            <li><span><i class="bi bi-file-code-fill"></i> Designing reactive state
+                                                    profiles</span> <span>Quiz</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Module 8 -->
+                            <div class="accordion-item-custom">
+                                <h2 class="accordion-header" id="headingEight">
+                                    <button class="accordion-button-custom collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false"
+                                        aria-controls="collapseEight">
+                                        Module 8: App Store & Google Play Publishing
+                                        <i class="bi bi-chevron-down ms-auto"></i>
+                                    </button>
+                                </h2>
+                                <div id="collapseEight" class="accordion-collapse collapse"
+                                    aria-labelledby="headingEight" data-bs-parent="#curriculumAccordion">
+                                    <div class="accordion-body-custom">
+                                        Walk through build optimization steps. Learn code-splitting, bundle generation,
+                                        app icons configurations, splash screen design, and step-by-step app submissions
+                                        guidelines for App Store Connect and Google Play Console.
+                                        <ul class="syllabus-list mt-3">
+                                            <li><span><i class="bi bi-play-circle-fill"></i> Compiling APK / AAB
+                                                    binaries for Android</span> <span>25:40</span></li>
+                                            <li><span><i class="bi bi-play-circle-fill"></i> Building IPA binaries &
+                                                    configuring TestFlight</span> <span>32:15</span></li>
+                                            <li><span><i class="bi bi-file-code-fill"></i> Play Console & App Store
+                                                    guidelines</span> <span>28:00</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Prerequisites -->
+                    <div>
+                        <h3 class="fw-bold mb-4">Prerequisites</h3>
+                        <div class="prereq-item">
+                            <div class="prereq-icon"><i class="bi bi-arrow-right-circle-fill"></i></div>
+                            <p class="prereq-text">
+                                **JavaScript Basics**: A solid understanding of modern JavaScript (ES6+ features like
+                                Arrow Functions, Promises, Async/Await, and Destructuring).
+                            </p>
+                        </div>
+                        <div class="prereq-item">
+                            <div class="prereq-icon"><i class="bi bi-arrow-right-circle-fill"></i></div>
+                            <p class="prereq-text">
+                                **React Core Concepts**: Understanding React concepts like Components, Props, State, and
+                                standard React hooks (useState, useEffect) will help speed up your progress, though we
+                                review them.
+                            </p>
+                        </div>
+                        <div class="prereq-item">
+                            <div class="prereq-icon"><i class="bi bi-arrow-right-circle-fill"></i></div>
+                            <p class="prereq-text">
+                                **Computer Setup**: A laptop (Mac or Windows) with internet access. Note: A Mac is
+                                required to test and compile applications for iOS simulators/App Store.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Sidebar Column (4 Cols) -->
+                <div class="col-lg-4">
+                    <div class="course-sidebar-card">
+                        <div class="course-price-wrapper d-flex align-items-center">
+                            <span class="course-price-current">5,000</span>
+                            <span class="course-price-original">10,000</span>
+                            <span class="badge bg-danger ms-3 px-3 py-2 rounded-3 text-uppercase font-weight-bold"
+                                style="font-size: 0.75rem; letter-spacing: 0.5px;">50% Off</span>
+                        </div>
+
+                        <p class="small text-danger fw-bold mb-4"><i class="bi bi-alarm-fill me-1"></i> Special
+                            Promotion: Free enrollment active!</p>
+
+                        <a href="https://wa.me/923252831696" target="_blank" class="btn btn-success w-100 py-3 mb-3 text-white fw-bold fs-6 d-flex align-items-center justify-content-center gap-2">
+                            <i class="bi bi-whatsapp fs-5"></i> 03252831696
+                        </a>
+                    </div>
+
+                    <!-- Instructor Biography -->
+                    <div class="instructor-card">
+                        <div class="instructor-header">
+                            <div class="instructor-avatar">MK</div>
+                            <div class="instructor-info">
+                                <h5>Asim Atique</h5>
+                                <span>Lead Mobile Architect</span>
+                            </div>
+                        </div>
+                        <p class="small text-muted mb-0">
+                            Asim is a veteran senior mobile app engineer and curriculum designer with over 4 years
+                            of professional experience building scalable commercial applications using React Native,
+                            Android, Swift, and JavaScript systems.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+      5. FOOTER SECTION (Consistent with Landing page)
+    ========================================= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Column 1: Brand details -->
+                <div class="col-lg-4 col-md-6">
+                    <a class="footer-logo" href="index.html#home">
+                        <img src="assets/images/Logo.png" alt="Quantum App Labs" height="35"
+                            class="d-inline-block align-middle me-1">
+                    </a>
+                    <p class="footer-desc">
+                        Nori provides state-of-the-art courses and virtual educational environments to support community
+                        development, tech enablement, and academic skill building worldwide.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-btn"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-btn"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="social-btn"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-btn"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Navigation links -->
+                <div class="col-lg-2 col-md-6">
+                    <h4 class="footer-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#why-choose">Why Choose Us</a></li>
+                        <li><a href="index.html#courses">Courses</a></li>
+                        <li><a href="index.html#event">Event</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact info -->
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li class="text-white-50"><i class="bi bi-geo-alt-fill text-orange me-2"></i> Avenue of the
+                            Moon, NY</li>
+                        <li><a href="tel:+0212345198"><i class="bi bi-telephone-fill text-orange me-2"></i> (02)
+                                123-451-98</a></li>
+                        <li><a href="mailto:info@nori-edu.com"><i class="bi bi-envelope-fill text-orange me-2"></i>
+                                info@nori-edu.com</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Newsletter -->
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="footer-title">Newsletter</h4>
+                    <p class="footer-desc" style="font-size: 0.82rem;">
+                        Subscribe to get latest updates, course openings, and event alerts.
+                    </p>
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Email Address" aria-label="Email Address">
+                        <button class="btn btn-orange py-2 px-3" type="button"><i class="bi bi-send"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom copyrights bar -->
+            <div class="footer-bottom text-center">
+                <p class="mb-0">&copy; 2026 Nori Education Platform. All Rights Reserved. Built with Bootstrap.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =========================================
+      6. MODALS FLOW FOR INTERACTIVE ENROLLMENT
+    ========================================= -->
+
+    <!-- Modal 1: Enroll Registration Form -->
+    <div class="modal fade" id="enrollFormModal" tabindex="-1" aria-labelledby="enrollFormModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="modal-header border-bottom-0 pb-0">
+                    <h4 class="modal-title fw-bold pt-3 px-3" id="enrollFormModalLabel">Join Course</h4>
+                    <button type="button" class="btn-close" data-bs-close="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="enrollmentForm" class="px-2">
+                        <div class="mb-3">
+                            <label for="studentName" class="form-label font-weight-bold">Your Full Name</label>
+                            <input type="text" class="form-control" id="studentName" placeholder="John Doe" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="studentEmail" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="studentEmail" placeholder="john@example.com"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="studentExperience" class="form-label">Coding Experience</label>
+                            <select class="form-select form-control" id="studentExperience">
+                                <option value="beginner">Beginner (No coding experience)</option>
+                                <option value="intermediate" selected>Intermediate (Know some HTML/JS)</option>
+                                <option value="expert">Advanced (Backend/Web developer)</option>
+                            </select>
+                        </div>
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" value="" id="studentAgreement" required
+                                checked>
+                            <label class="form-check-input-label text-muted small" for="studentAgreement">
+                                I agree to receive course reminders and study materials.
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-orange w-100 py-3 text-white fw-bold">Confirm
+                            Enrollment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Success Splash Screen -->
+    <div class="modal fade" id="enrollSuccessModal" tabindex="-1" aria-labelledby="enrollSuccessModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="modal-body text-center p-5">
+                    <div class="mb-4 d-inline-flex align-items-center justify-content-center bg-success text-white rounded-circle animate-scale-up"
+                        style="width: 80px; height: 80px; font-size: 2.5rem; box-shadow: 0 10px 25px rgba(25, 135, 84, 0.3);">
+                        <i class="bi bi-check-lg"></i>
+                    </div>
+                    <h3 class="modal-title mb-3" style="font-weight: 800; color: var(--text-dark);">Enrollment
+                        Successful!</h3>
+                    <p class="text-muted mb-4">
+                        Congratulations, <span id="displayStudentName" class="fw-bold text-dark"></span>! You have
+                        successfully enrolled in the **React Native Mobile App Development Masterclass**. We've
+                        dispatched study links and simulator configuration files to your email at <span
+                            id="displayStudentEmail" class="fw-bold text-dark"></span>.
+                    </p>
+                    <button type="button" class="btn btn-orange w-100 py-3 text-white" data-bs-dismiss="modal">Start
+                        Coding Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 Bundle JS with Popper (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom Enrollment JS Form Flow Handler -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const enrollmentForm = document.getElementById('enrollmentForm');
+            const enrollFormModal = new bootstrap.Modal(document.getElementById('enrollFormModal'));
+            const enrollSuccessModal = new bootstrap.Modal(document.getElementById('enrollSuccessModal'));
+
+            if (enrollmentForm) {
+                enrollmentForm.addEventListener('submit', function (event) {
+                    event.preventDefault(); // Stop page reload
+
+                    const name = document.getElementById('studentName').value.trim();
+                    const email = document.getElementById('studentEmail').value.trim();
+
+                    if (name && email) {
+                        // Display student info in success modal
+                        document.getElementById('displayStudentName').textContent = name;
+                        document.getElementById('displayStudentEmail').textContent = email;
+
+                        // Hide input form modal
+                        enrollFormModal.hide();
+
+                        // Wait a tiny moment for smooth transition
+                        setTimeout(function () {
+                            // Show success splash modal
+                            enrollSuccessModal.show();
+                            enrollmentForm.reset();
+                        }, 400);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

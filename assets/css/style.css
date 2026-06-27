@@ -935,3 +935,259 @@ section {
     font-size: 0.82rem;
     color: #727a87;
 }
+
+/* =========================================
+  12. Course Details Page Specific Styles
+========================================= */
+
+.course-hero {
+    position: relative;
+    padding-top: 180px;
+    padding-bottom: 90px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--bg-white);
+}
+
+.course-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(10, 15, 28, 0.95), rgba(15, 21, 35, 0.75));
+    z-index: 1;
+}
+
+.course-hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.course-rating-stars {
+    color: #ffb606;
+}
+
+.course-meta-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.course-meta-inline span i {
+    color: var(--primary-color);
+}
+
+/* Sidebar Info Card */
+.course-sidebar-card {
+    background-color: var(--bg-white);
+    border-radius: 24px;
+    padding: 35px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.07);
+    border: 1px solid var(--border-color);
+    position: sticky;
+    top: 100px;
+    z-index: 10;
+    transition: var(--transition-smooth);
+}
+
+.course-sidebar-card:hover {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+.course-price-wrapper {
+    margin-bottom: 25px;
+}
+
+.course-price-current {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.course-price-original {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    text-decoration: line-through;
+    margin-left: 10px;
+    font-weight: 500;
+}
+
+.course-details-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 30px;
+    border-top: 1px solid var(--border-color);
+}
+
+.course-details-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.course-details-list li span:first-child {
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.course-details-list li span:first-child i {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+/* Syllabus / Accordion Styles */
+.course-curriculum-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.accordion-item-custom {
+    border: 1px solid var(--border-color) !important;
+    border-radius: 16px !important;
+    overflow: hidden;
+    margin-bottom: 15px;
+    background-color: var(--bg-white);
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01);
+}
+
+.accordion-item-custom:hover {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 6px 20px rgba(232, 84, 44, 0.05);
+}
+
+.accordion-button-custom {
+    background-color: var(--bg-white) !important;
+    color: var(--text-dark) !important;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 18px 24px;
+    border: none;
+    outline: none;
+    box-shadow: none !important;
+    text-align: left;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.accordion-button-custom:not(.collapsed) {
+    background-color: var(--bg-cream) !important;
+    color: var(--primary-color) !important;
+}
+
+.accordion-button-custom::after {
+    display: none; /* Hide default icon to use bootstrap icons if needed or default transitions */
+}
+
+.accordion-body-custom {
+    background-color: var(--bg-white);
+    padding: 20px 24px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.syllabus-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.syllabus-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--border-color);
+    font-size: 0.9rem;
+}
+
+.syllabus-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.syllabus-list li span:first-child {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-dark);
+}
+
+.syllabus-list li span:first-child i {
+    color: var(--primary-color);
+}
+
+/* Instructor card */
+.instructor-card {
+    background-color: var(--bg-cream);
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid var(--border-color);
+    margin-top: 40px;
+}
+
+.instructor-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.instructor-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: var(--bg-white);
+    font-size: 1.4rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(232, 84, 44, 0.2);
+}
+
+.instructor-info h5 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.instructor-info span {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+/* Back Button */
+.back-to-courses {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    transition: var(--transition-smooth);
+}
+
+.back-to-courses:hover {
+    color: var(--primary-hover);
+    transform: translateX(-4px);
+}
+
